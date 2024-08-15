@@ -18,6 +18,7 @@
 
         <label for="gentle">Danh xưng của khách:</label>
         <select id="gentle" name="gentle">
+            <option value="bạn">Bạn</option>
             <option value="anh">Anh</option>
             <option value="chị">Chị</option>
             <option value="cô">Cô</option>
@@ -55,6 +56,8 @@
             gentle = gentle.toLowerCase();
             if (gentle === "anh") {
                 pronouns = 'em';
+            } else if (gentle === "bạn") {
+                pronouns = 'mình';
             } else if (gentle === "chị") {
                 pronouns = 'em';
             } else if (gentle === "cô") {
