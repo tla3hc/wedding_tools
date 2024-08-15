@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation text generation</title>
+</head>
+<body>
+    <form>
+        <label for="name">Tên:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="gentle">Danh xưng:</label>
+        <select id="gentle" name="gentle">
+            <option value="anh">Anh</option>
+            <option value="chị">Chị</option>
+            <option value="cô">Cô</option>
+            <option value="bác">Bác</option>
+            <option value="dì">Dì</option>
+            <option value="chú">Chú</option>
+            <option value="ông">Ông</option>
+            <option value="bà">Bà</option>
+            <option value="em">Em</option>
+        </select><br><br>
+
+        <label for="your_gentle">Bạn là:</label>
+        <select id="your_gentle" name="your_gentle">
+            <option value="nam">Lâm</option>
+            <option value="nữ">Lan Anh</option>
+        </select><br><br>
+
+        <button type="button" id="genButton">Gen</button>
+    </form>
+    <script>
+        document.getElementById('genButton').addEventListener('click', function() {
+            let name = document.getElementById('name').value;
+            let gentle = document.getElementById('gentle').value;
+            // let your_gentle = document.getElementById('your_gentle').value;
+            // Get your gentle
+            let your_gentle = document.getElementById('your_gentle').value;
+            let pronouns = '';
+
+            if (!name || !gentle || !your_gentle) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Lower case the gentle
+            gentle = gentle.toLowerCase();
+            if (gentle === "anh") {
+                pronouns = 'em';
+            } else if (gentle === "chị") {
+                pronouns = 'em';
+            } else if (gentle === "cô") {
+                pronouns = 'cháu';
+            } else if (gentle === "bác") {
+                pronouns = 'cháu';
+            } else if (gentle === "dì") {
+                pronouns = 'cháu';
+            } else if (gentle === "chú") {
+                pronouns = 'cháu';
+            } else if (gentle === "ông") {
+                pronouns = 'cháu';
+            } else if (gentle === "bà") {
+                pronouns = 'cháu';
+            } else if (gentle === "em") {
+                if (your_gentle === "nam") {
+                    pronouns = 'anh';
+                } else {
+                    pronouns = 'chị';
+                }
+            } else {
+                pronouns = 'mình';
+            }
+
+            // Message template
+            let message = '';
+            if (your_gentle === "nam") {
+                message = `Thân gửi ${gentle} ${name},
+Trước hết ${pronouns} thành thật xin lỗi và lấy làm tiếc khi không thể gặp trực tiếp gửi thiệp mời đám cưới. Mong ${gentle} ${name} sắp xếp chút thời gian đến tiệc mừng và dự lễ thành hôn của ${pronouns}.
+Tiệc mừng được tổ chức vào lúc 9 giờ, sáng chủ nhật, ngày 22/09/2024, tại nhà trai, Thôn Giai Lệ, Lệ Xá, Tiên Lữ, Hưng Yên. 
+Lễ thành hôn được tổ chức vào lúc 8 giờ, sáng chủ nhật, ngày 22/09/2024.  
+${pronouns} nhắn tin này chân thành mời ${gentle} ${name} đến tham dự chung vui cùng ${pronouns}. Sự hiện diện của ${gentle} ${name} là niềm vinh dự của ${pronouns} và gia đình. Cảm ơn ${gentle} ${name} rất nhiều!`;
+            } else {
+                message = `Thân gửi ${gentle} ${name},
+Trước hết ${pronouns} thành thật xin lỗi và lấy làm tiếc khi không thể gặp trực tiếp gửi thiệp mời đám cưới. Mong ${gentle} ${name} sắp xếp chút thời gian đến tiệc mừng và dự lễ thành hôn của ${pronouns}.
+Tiệc mừng được tổ chức vào lúc 16 giờ, chiều thứ 7 ngày 21/09/2024, tại nhà gái, Thôn Mễ Xá, xã Nguyễn Trãi, huyện Ân Thi, Hưng Yên. 
+Lễ thành hôn được tổ chức vào lúc 8 giờ, sáng chủ nhật, ngày 22/09/2024.  
+${pronouns} nhắn tin này chân thành mời ${gentle} ${name} đến tham dự chung vui cùng ${pronouns}. Sự hiện diện của ${gentle} ${name} là niềm vinh dự của ${pronouns} và gia đình. Cảm ơn ${gentle} ${name} rất nhiều!`;
+            }
+            
+            // copy to clipboard
+            navigator.clipboard.writeText(message);
+            alert('Copied to clipboard');
+
+            console.log(message);
+        });
+    </script>
+</body>
+</html>
